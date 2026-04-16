@@ -6,7 +6,7 @@ class Worker(BaseModel):
     registration_code: int
     name: str
     lastname: str
-    birth_date: int 
+    birth_year: int 
     salary: float
     start_date: date
     end_date: Optional[date] = None
