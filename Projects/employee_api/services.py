@@ -2,6 +2,7 @@ import numpy as np
 from database import company_db
 from datetime import date
 
+# Queries
 def list_all_workers():
     return company_db
 
@@ -53,5 +54,13 @@ def list_by_company_years(start_date=None, end_date=None):
         return []
     return results
 
+# Statistical search
+def avg_salary():
+    result = []
+    for worker in company_db.values():
+        result.append(worker.salary)
+
+    return np.mean(result)
+
 #testar = list_by_department('HR')
-print(list_by_company_years())
+print(avg_salary())
