@@ -139,5 +139,85 @@ def get_salaries_bigger_than_avg():
         return []
     return bigger_than_avg_salaries
 
-print(get_avg_salary())
-print(get_salaries_bigger_than_avg())
+def get_satisfaction_rate_below_value(rate):
+    satisfaction_rates = []
+    for worker in company_db.values():
+        if worker.satisfaction_rate < rate:
+            satisfaction_rates.append(worker.model_dump())
+    
+    if not satisfaction_rates:
+        return []
+    return satisfaction_rates
+
+def get_workers_with_n_company_years(company_years, operation):
+    workers = []
+    year_today = date.today().year
+    
+    for worker in company_db.values():
+        tenure = worker.start_date.year
+        if operation == "eq" and tenure == company_years:
+            workers.append(worker.model_dump())
+        elif operation == "gt" and tenure > company_years:
+            workers.append(worker.model_dump())
+        elif operation == "lt" and tenure < company_years:
+            workers.append(worker.model_dump())
+
+    return workers
+
+def get_workers_from_a_department(department):
+    departments = np.unique([worker.department for worker in company_db.values()])
+    workers = []
+
+    for worker in company_db.values():
+        if worker.department.upper() == department.upper():
+            workers.append(worker.model_dump())
+
+    if not workers:
+        return []
+    return workers 
+
+def get_workers_by_age(age):
+    workers = []
+    year_today = date.today().year
+
+    for worker in company_db.values():
+        if (year_today - worker.birth_year) == age:
+            workers.append(worker.model_dump())
+
+    if not workers:
+        return []
+    return workers
+
+# Insights
+def get_percentage_workers_above_avg():
+    pass
+
+def get_department_with_highest_satisfaction_rate_avg():
+    departments_satisfaction_rate = {}
+
+    for worker in company_db.values():
+        if worker.department in departments_satisfaction_rate:
+            departments_satisfaction_rate[worker.department].append(worker.satisfaction_rate)
+        else:
+            departments_satisfaction_rate[worker.department] = [worker.satisfaction_rate]
+
+    averages = {department: np.mean(rates) for department, rates in departments_satisfaction_rate.items()}
+
+    return max(averages, key=averages.get)
+
+def get_department_with_lowest_avg_salary():
+    pass
+
+def get_longest_tenured_worker():
+    pass
+
+def get_avg_satisfaction_by_department():
+    pass
+
+def get_avg_salary_by_department():
+    pass
+
+def get_top_3_highest_salaries():
+    pass
+
+print(get_department_with_highest_satisfaction_rate_avg())
