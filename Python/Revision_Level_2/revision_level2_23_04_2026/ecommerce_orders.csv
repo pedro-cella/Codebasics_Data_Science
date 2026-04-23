@@ -1,0 +1,21 @@
+order_id,customer_id,region,category,price,quantity,payment_method,rating
+1,101,North,Electronics,1200,1,Credit Card,5
+2,102,South,Clothing,80,2,Debit Card,4
+3,103,North,Groceries,10,10,Cash,3
+4,104,East,Electronics,900,1,Credit Card,4
+5,105,West,Clothing,60,3,Cash,2
+6,101,North,Electronics,1100,1,Credit Card,5
+7,106,South,Groceries,15,8,Debit Card,3
+8,107,East,Clothing,70,2,Credit Card,4
+9,108,West,Electronics,1300,1,Credit Card,5
+10,109,North,Groceries,12,12,Cash,2
+11,110,South,Clothing,90,1,Debit Card,3
+12,111,East,Electronics,1000,1,Credit Card,4
+13,112,West,Groceries,11,9,Cash,2
+14,113,North,Clothing,75,2,Debit Card,4
+15,114,South,Electronics,950,1,Credit Card,5
+16,115,East,Groceries,14,7,Cash,3
+17,116,West,Clothing,65,2,Credit Card,4
+18,117,North,Electronics,1250,1,Credit Card,5
+19,118,South,Groceries,13,11,Cash,3
+20,119,East,Clothing,85,2,Debit Card,4
