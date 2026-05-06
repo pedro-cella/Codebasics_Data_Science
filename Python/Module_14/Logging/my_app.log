@@ -1,0 +1,9 @@
+2026-05-05 09:30:15,080 - my_logger - DEBUG - This is a debug message from my_logger
+2026-05-05 09:30:15,080 - my_logger - INFO - This is an info message from my_logger
+2026-05-05 09:30:15,080 - my_logger - WARNING - This is a warning message from my_logger
+2026-05-05 09:30:15,080 - my_logger - ERROR - This is an error message from my_logger
+2026-05-05 09:30:15,080 - payment_processor - CRITICAL - payment failed
+2026-05-05 09:30:15,080 - customer_inquiry_processor - CRITICAL - This is a critical message from my_logger
+2026-05-05 09:30:15,080 - customer_inquiry_processor - CRITICAL - This is a critical message from my_logger
+2026-05-05 09:30:15,080 - payment_processor - CRITICAL - This is a critical message from my_logger
+2026-05-05 09:30:15,080 - payment_processor - CRITICAL - This is a critical message from my_logger
