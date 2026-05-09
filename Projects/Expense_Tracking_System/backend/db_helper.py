@@ -35,6 +35,22 @@ def fetch_expenses_for_date(expense_date):
         cursor.execute("SELECT * FROM expenses WHERE expense_date = %s", (expense_date,))
         expenses = cursor.fetchall()
         return expenses
+    
+def fetch_expenses_for_month():
+    logger.info("fetch_expenses_for_month called")
+    with get_db_cursor() as cursor:
+        cursor.execute(
+            """
+            SELECT 
+                MONTH(expense_date) AS month_number, 
+                MONTHNAME(expense_date) AS month_name, 
+                SUM(amount) AS total
+            FROM expenses
+            GROUP BY month_number, month_name
+            ORDER BY month_number;
+            """
+        )
+        return cursor.fetchall()
 
 def delete_expenses_for_data(expense_date):
     logger.info(f"delete_expenses_for_data called with {expense_date}")

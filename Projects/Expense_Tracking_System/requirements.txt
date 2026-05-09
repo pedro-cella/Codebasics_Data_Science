@@ -1,6 +1,8 @@
 mysql-connector-python
 pydantic
 pytest
-fastapi[standard]
+fastapi
 uvicorn
 streamlit
+pandas
+requests
