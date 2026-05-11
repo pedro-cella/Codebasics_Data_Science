@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pytest
+pydantic
+streamlit
+numpy
+seaborn
+matplotlib
+pandas
+mysql-connector-python
+requests
+python-dotenv
+plotly
+notebook
