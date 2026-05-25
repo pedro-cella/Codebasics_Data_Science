@@ -1,5 +1,5 @@
-from src.api.rawg_client import get_games, parse_games
-from src.database.insert_games import insert_games
+from backend.api.rawg_client import get_games, parse_games
+from backend.database.insert_games import insert_games
 
 all_games = []
 

@@ -1,5 +1,5 @@
 import requests
-from src.config import RAWG_API_KEY
+from backend.config import RAWG_API_KEY
 
 BASE_URL = "https://api.rawg.io/api/games"
 

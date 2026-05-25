@@ -1,5 +1,5 @@
 import mysql.connector
-from src.config import (
+from backend.config import (
     MYSQL_HOST,
     MYSQL_USER,
     MYSQL_PASSWORD,
