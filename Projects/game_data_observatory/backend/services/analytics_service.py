@@ -250,5 +250,5 @@ def get_monthly_releases_for_top_years(top_n=3):
     ).size().reset_index(name="count")
 
 if __name__ == "__main__":
-    teste = get_year_distribution()
+    teste = get_monthly_releases_for_top_years()
     print(teste)
