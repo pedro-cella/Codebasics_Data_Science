@@ -184,16 +184,70 @@ def get_year_distribution():
 # =========================
 
 def get_rating_metacritic_data():
-    pass
+    # Load all games table
+    df = load_games_dataframe()
+
+    # Return a DataFrame with rating and metacritic
+    return df[["rating", "metacritic"]].dropna()
 
 def get_engagement_rating_data():
-    pass
+    # Load all games table
+    df = load_games_dataframe()
+
+    # Order by rating count
+    df = df.sort_values(by='ratings_count', ascending=True)
+
+   # Return a DataFrame with rating and rating_counts
+    return df[["ratings_count", "rating"]]
 
 def get_engagement_quartiles():
-    pass
+    # Load all games table
+    df = load_games_dataframe()
+
+    # Order by rating count
+    df = df.sort_values(by='ratings_count', ascending=True)
+
+    # Create the quartiles
+    df["quartile"] = pd.qcut(
+        df["ratings_count"],
+        4,
+        labels=[
+            'Low Popularity',
+            'Medium Popularity',
+            'High Popularity',
+            'Very High Popularity'
+        ]
+    )
+
+    # Return rating and created quartiles
+    return df[["rating", "quartile"]]
 
 def get_monthly_releases_for_top_years(top_n=3):
-    pass
+    # Load all games table
+    df = load_games_dataframe()
+
+    # Convert from Object to datetime64
+    df['released'] = pd.to_datetime(df['released'], errors="coerce")
+
+    # Create year column
+    df["year"] = df["released"].dt.year
+
+    # Create month column
+    df["month"] = df["released"].dt.month
+
+    # Get top 3 years
+    top_n_years = df["year"].value_counts() \
+    .head(top_n) \
+    .index \
+    .tolist()
+
+    #  Filter year column by top_n_years
+    df = df[df["year"].isin(top_n_years)]
+
+    # Return year and month grouped by count
+    return df.groupby(
+        ["year", "month"]
+    ).size().reset_index(name="count")
 
 if __name__ == "__main__":
     teste = get_year_distribution()
