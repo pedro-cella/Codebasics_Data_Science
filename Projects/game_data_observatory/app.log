@@ -1,0 +1,60 @@
+2026-06-01 18:42:22,992 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:42:23,141 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:42:23,176 - backend.services.analytics_service - INFO - Generating summary metrics
+2026-06-01 18:42:23,176 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:42:23,176 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:42:23,207 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:42:23,212 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:42:23,215 - backend.services.analytics_service - INFO - Fetching unique platforms
+2026-06-01 18:42:23,215 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:42:23,215 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:42:23,257 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:42:23,259 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:42:23,260 - backend.services.analytics_service - INFO - Found 19 unique platforms
+2026-06-01 18:42:23,260 - backend.services.analytics_service - INFO - Fetching unique genres
+2026-06-01 18:42:23,260 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:42:23,260 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:42:23,292 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:42:23,294 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:42:23,294 - backend.services.analytics_service - INFO - Found 16 unique genres
+2026-06-01 18:42:23,294 - backend.services.analytics_service - INFO - Summary metrics generated: 120 games
+2026-06-01 18:47:56,475 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:47:56,542 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:47:56,562 - backend.services.analytics_service - INFO - Generating summary metrics
+2026-06-01 18:47:56,562 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:47:56,562 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:47:56,593 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:47:56,598 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:47:56,600 - backend.services.analytics_service - INFO - Fetching unique platforms
+2026-06-01 18:47:56,600 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:47:56,600 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:47:56,630 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:47:56,632 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:47:56,633 - backend.services.analytics_service - INFO - Found 19 unique platforms
+2026-06-01 18:47:56,633 - backend.services.analytics_service - INFO - Fetching unique genres
+2026-06-01 18:47:56,633 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:47:56,633 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:47:56,673 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:47:56,675 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:47:56,676 - backend.services.analytics_service - INFO - Found 16 unique genres
+2026-06-01 18:47:56,676 - backend.services.analytics_service - INFO - Summary metrics generated: 120 games
+2026-06-01 18:50:51,584 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:50:51,625 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:50:51,643 - backend.services.analytics_service - INFO - Generating summary metrics
+2026-06-01 18:50:51,643 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:50:51,644 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:50:51,677 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:50:51,682 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:50:51,683 - backend.services.analytics_service - INFO - Fetching unique platforms
+2026-06-01 18:50:51,684 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:50:51,684 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:50:51,712 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:50:51,715 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:50:51,715 - backend.services.analytics_service - INFO - Found 19 unique platforms
+2026-06-01 18:50:51,716 - backend.services.analytics_service - INFO - Fetching unique genres
+2026-06-01 18:50:51,716 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 18:50:51,716 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 18:50:51,743 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 18:50:51,745 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 18:50:51,746 - backend.services.analytics_service - INFO - Found 16 unique genres
+2026-06-01 18:50:51,746 - backend.services.analytics_service - INFO - Summary metrics generated: 120 games
