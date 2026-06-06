@@ -58,3 +58,23 @@
 2026-06-01 18:50:51,745 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
 2026-06-01 18:50:51,746 - backend.services.analytics_service - INFO - Found 16 unique genres
 2026-06-01 18:50:51,746 - backend.services.analytics_service - INFO - Summary metrics generated: 120 games
+2026-06-01 19:06:55,518 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 19:06:55,681 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 19:06:56,066 - backend.services.analytics_service - INFO - Generating summary metrics
+2026-06-01 19:06:56,066 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 19:06:56,067 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 19:06:56,098 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 19:06:56,192 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 19:06:56,235 - backend.services.analytics_service - INFO - Fetching unique platforms
+2026-06-01 19:06:56,235 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 19:06:56,236 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 19:06:56,267 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 19:06:56,270 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 19:06:56,272 - backend.services.analytics_service - INFO - Found 19 unique platforms
+2026-06-01 19:06:56,273 - backend.services.analytics_service - INFO - Fetching unique genres
+2026-06-01 19:06:56,273 - backend.services.analytics_service - INFO - Loading games dataframe
+2026-06-01 19:06:56,273 - backend.database.queries.games_queries - INFO - Fetching all games.
+2026-06-01 19:06:56,302 - backend.database.queries.games_queries - INFO - Fetched 120 games
+2026-06-01 19:06:56,304 - backend.services.analytics_service - INFO - Dataframe loaded with 120 rows
+2026-06-01 19:06:56,305 - backend.services.analytics_service - INFO - Found 16 unique genres
+2026-06-01 19:06:56,305 - backend.services.analytics_service - INFO - Summary metrics generated: 120 games
