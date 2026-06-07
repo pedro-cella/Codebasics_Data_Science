@@ -192,7 +192,7 @@ GROUP BY `rank`;
 -- Show difficulty and total_gold.
 -- Order by total_gold descending.
 SELECT
-	DISTINCT difficulty,
+	difficulty,
     SUM(reward_gold) AS total_gold
 FROM quests
 GROUP BY difficulty
@@ -320,7 +320,7 @@ SELECT
     difficulty,
     reward_gold,
     CASE
-		WHEN difficulty = 'Epic' OR difficulty = 'Legendary' THEN ROUND(0.2*reward_gold, 0)
+		WHEN difficulty = 'Epic' OR difficulty = 'Legendary' THEN ROUND(1.2*reward_gold, 0)
         ELSE reward_gold
     END AS bonus_gold
 FROM quests
@@ -384,16 +384,15 @@ WHERE ag.guild_id IS NULL;
 -- Guilds with no adventurers should still appear, with NULL for adventurer details.
 -- Hint: Think about which table should be on the LEFT side of the join.
 -- Show guild_name, region, and adventurer name.
-SELECT
-	g.guild_name,
-    g.region,
-	GROUP_CONCAT(a.name SEPARATOR " | ") AS adventurers
-FROM guilds g
-LEFT JOIN adventurer_guild ag
-ON g.guild_id = ag.guild_id
-LEFT JOIN adventurers a
-ON a.adventurer_id = ag.adventurer_id
-GROUP BY g.guild_id, g.guild_name, g.region;
+	SELECT
+		g.guild_name,
+		g.region,
+		a.name AS adventurers
+	FROM guilds g
+	LEFT JOIN adventurer_guild ag
+	ON g.guild_id = ag.guild_id
+	LEFT JOIN adventurers a
+	ON a.adventurer_id = ag.adventurer_id;
 
 -- Exercise 24
 -- Find all guilds that currently have NO adventurers registered.
@@ -535,7 +534,7 @@ ORDER BY member_count DESC;
 -- Order by avg_score descending.
 SELECT
 	a.name AS adventurer_name,
-    SUM(q.quest_id) AS total_completion,
+    COUNT(qc.completion_id) AS total_completion,
     ROUND(AVG(qc.score),1) AS avg_score,
     MAX(qc.score) AS best_score
 FROM quest_completion qc
@@ -544,7 +543,8 @@ ON qc.quest_id = q.quest_id
 INNER JOIN adventurers a
 ON qc.adventurer_id = a.adventurer_id
 GROUP BY a.name
-ORDER BY a.name;
+HAVING total_completion >= 2
+ORDER BY avg_score DESC;
 
 -- Exercise 33
 -- List each guild with the names of all its members concatenated into one string.
@@ -617,7 +617,7 @@ WHERE ag.adventurer_id IS NULL;
 -- Show difficulty and rank as two columns.
 -- Hint: Use two subqueries or DISTINCT selections from the relevant tables.
 --       CROSS JOIN produces M x N rows (no ON condition needed).
-SELECT
+SELECT 
 	q.difficulty,
     a.`rank`
 FROM quests q
@@ -632,7 +632,7 @@ CROSS JOIN adventurers a;
 -- Hint: You will need to join guilds → adventurer_guild → adventurers → quest_completion.
 SELECT
 	g.region,
-    GROUP_CONCAT(a.name SEPARATOR ", ") AS adventurer_name,
+    a.name AS adventurer_name,
     COUNT(qc.quest_id) AS quest_count
 FROM guilds g
 LEFT JOIN adventurer_guild ag
@@ -641,8 +641,8 @@ LEFT JOIN adventurers a
 ON ag.adventurer_id = a.adventurer_id
 LEFT JOIN quest_completion qc
 ON qc.adventurer_id = a.adventurer_id
-GROUP BY g.region
-ORDER BY quest_count DESC;
+GROUP BY g.region, a.name
+ORDER BY g.region, quest_count DESC;
 
 -- Exercise 37
 -- Find adventurers who have mastered at least one skill at mastery_level 5
@@ -688,11 +688,23 @@ WHERE ads.mastery_level = 5 AND qc.score > 90;
 SELECT
 	g.guild_name,
     g.region,
-	COUNT(a.adventurer_id) AS member_count,
+	COUNT(DISTINCT a.adventurer_id) AS member_count,
     ROUND(AVG(a.`level`), 1) AS avg_level,
-    SUM(q.quest_id) AS total_quest_completions,
-    
-
+    COUNT(qc.completion_id) AS total_quest_completions,
+    CASE
+		WHEN COUNT(qc.completion_id) >= 10 THEN 'Elite'
+        WHEN COUNT(qc.completion_id) >= 5 THEN 'Active'
+        ELSE 'Developing'
+    END AS guild_tiar
+    FROM guilds g
+    LEFT JOIN adventurer_guild ag
+    ON g.guild_id = ag.guild_id
+    LEFT JOIN adventurers a
+    ON ag.adventurer_id = a.adventurer_id
+    LEFT JOIN quest_completion qc
+    ON a.adventurer_id = qc.adventurer_id
+    GROUP BY g.guild_name, g.region
+    ORDER BY total_quest_completions DESC;
 
 -- Exercise 39
 -- BOSS FIGHT 2: Top Performing Adventurers Leaderboard
@@ -712,9 +724,25 @@ SELECT
 -- Limit to the top 10.
 -- Hint: You need to join adventurers, quest_completion, and optionally adventurer_guild + guilds.
 --       Calculate the derived column in SELECT using arithmetic.
-
-
-
+SELECT
+    a.name AS adventurer_name,
+    a.class,
+    a.`rank`,
+    g.guild_name,
+    COUNT(qc.completion_id) AS total_completions,
+    ROUND(AVG(qc.score), 1) AS avg_score,
+    ROUND((ROUND(AVG(qc.score), 1) * 0.5) + (COUNT(qc.completion_id) * 10) + (a.`level` * 2), 1) AS performance_score
+FROM adventurers a
+LEFT JOIN adventurer_guild ag
+    ON a.adventurer_id = ag.adventurer_id
+LEFT JOIN guilds g
+    ON ag.guild_id = g.guild_id
+LEFT JOIN quest_completion qc
+    ON a.adventurer_id = qc.adventurer_id
+WHERE qc.completion_id IS NOT NULL
+GROUP BY a.adventurer_id, a.name, a.class, a.`rank`, a.`level`, g.guild_name
+ORDER BY performance_score DESC
+LIMIT 10;
 
 -- Exercise 40
 -- BOSS FIGHT 3: Quest Difficulty Breakdown by Class
@@ -732,9 +760,24 @@ SELECT
 --       GROUP BY two columns: class and difficulty.
 --       HAVING filters on aggregate values.
 --       CASE can reference the alias only in ORDER BY, not HAVING — use the expression again.
-
-
-
+SELECT
+	a.class,
+    q.difficulty,
+	COUNT(qc.completion_id) AS completion_count,
+    ROUND(AVG(qc.score),1) AS avg_score,
+    CASE
+		WHEN ROUND(AVG(qc.score),1) >= 90 THEN 'Outstanding'
+        WHEN ROUND(AVG(qc.score),1) >= 75 THEN 'Solid'
+        ELSE 'Needs Work'
+    END AS result_quality
+FROM adventurers a
+LEFT JOIN quest_completion qc
+ON a.adventurer_id = qc.adventurer_id
+LEFT JOIN quests q
+ON qc.quest_id = q.quest_id
+GROUP BY a.class, q.difficulty
+HAVING completion_count >= 2
+ORDER BY a.class, avg_score DESC;
 
 -- =====================================================
 -- END OF EXERCISES
